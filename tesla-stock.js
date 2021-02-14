@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 (async () => {
   try {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto('https://www.marketwatch.com/investing/stock/tsla');
     await page.waitForSelector('.intraday__price');
