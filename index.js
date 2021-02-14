@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({ headless: true, args: ['--headless', '--disable-gpu'] });
     console.log('browser opened')
     const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 1200 })
+    await page.setViewport({ width: 1920, height: 1080 });
     console.log('new page opened')
     await page.goto('https://twitter.com/elonmusk');
     console.log('site opened');
