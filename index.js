@@ -3,16 +3,15 @@ const puppeteer = require('puppeteer');
   try {
     const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox', '--headless', '--disable-gpu'] });
     console.log('browser opened')
+    
     const page = await browser.newPage();
     await page.setViewport({ width: 1920, height: 1080 });
     console.log('new page opened')
-    await page.goto('https://twitter.com/elonmusk');
-    console.log('site opened');
 
-    await page.waitForSelector('[href="/elonmusk"]');
-    const title = await page.title();
+    await page.goto('https://twitter.com/Twitter', { waitUntil: 'networkidle2' });
 
-    await page.screenshot({ path: 'screenshot.png' });
+    const results = await page.$$eval('article div[lang]', (tweets) => tweets.map((tweet) => tweet.textContent));
+    console.log(results);
 
     console.info(`The title is: ${title}`);
     console.log('wait For Selector finished')
