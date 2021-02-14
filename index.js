@@ -9,14 +9,11 @@ const puppeteer = require('puppeteer');
     await page.goto('https://twitter.com/elonmusk');
     console.log('site opened');
 
-    await page.waitForSelector('title');
-  
+    await page.waitForSelector('[data-testid="tweet"]');
     const title = await page.title();
     console.info(`The title is: ${title}`);
-
-    /* await page.waitForSelector('[data-testid="tweet"]');
     console.log('wait For Selector finished')
-
+/* 
     const links = await page.evaluate(() => {
       let elements = Array.from(document.querySelectorAll('[data-testid="tweet"]'));
       let links = elements.map(x => x.querySelectorAll('a')[2].href);
