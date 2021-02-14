@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 (async () => {
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: true, args: ['--headless', '--disable-gpu', '--screenshot'] });
     console.log('browser opened')
     const page = await browser.newPage();
     console.log('new page opened')
