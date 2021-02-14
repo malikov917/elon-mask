@@ -13,6 +13,8 @@ const puppeteer = require('puppeteer');
     const results = await page.$$eval('article div[lang]', (tweets) => tweets.map((tweet) => tweet.textContent));
     console.log(results);
 
+    await page.screenshot({path: 'example.png'});
+
     console.log('wait For Selector finished')
 /* 
     const browser = await puppeteer.launch({ headless: true, args: ['--headless', '--disable-gpu'] });
